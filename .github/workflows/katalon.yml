@@ -35,7 +35,7 @@ jobs:
         uses: katalon-studio/katalon-studio-github-action@v2
         with:
           version: "9.0.0"
-          args: '-projectPath="${{ github.workspace }}" -browserType="${{ matrix.browser }}" -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" -apiKey=${{ secrets.KATALON_API_KEY }}'
+          args: '-browserType="${{ matrix.browser }}" -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" -apiKey=${{ secrets.KATALON_API_KEY }}'
         env:
           DISPLAY: ":99"
           NO_AT_BRIDGE: "1"
