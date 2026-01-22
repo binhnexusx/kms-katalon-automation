@@ -14,14 +14,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Run Katalon Studio
-        uses: katalon-studio/katalon-studio-github-action@v2 
-        with:
-          version: "9.0.0"
-          args: >
-            -noSplash 
-            -runMode=console 
-            -projectPath="./" 
-            -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" 
-            -browserType="${{ matrix.browser }}" 
+      - name: Run Katalon Studio with Xvfb
+        run: |
+          # Cài đặt Xvfb
+          sudo apt-get update
+          sudo apt-get install -y xvfb
+          
+          xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" \
+          npx katalon-studio@9.0.0 \
+            -noSplash \
+            -runMode=console \
+            -projectPath="./" \
+            -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" \
+            -browserType="${{ matrix.browser }}" \
             -apiKey=${{ secrets.KATALON_API_KEY }}
