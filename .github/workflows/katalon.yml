@@ -14,11 +14,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      - name: Start Xvfb
+        run: |
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          sleep 3
+
       - name: Run Katalon Studio
         uses: katalon-studio/katalon-studio-github-action@v2
         with:
           version: "9.0.0"
-          xvfb-run: true
           args: >
             -noSplash 
             -runMode=console 
@@ -26,3 +31,5 @@ jobs:
             -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" 
             -browserType="${{ matrix.browser }}" 
             -apiKey=${{ secrets.KATALON_API_KEY }}
+        env:
+          DISPLAY: ":99"
