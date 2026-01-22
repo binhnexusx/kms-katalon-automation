@@ -15,6 +15,9 @@ class ImageComparison {
     @Keyword
     def captureElementScreenshot(TestObject testObject, String imageName, double threshold = 0.1, int step = 5, int colorTolerance = 30) {
         
+        WebUI.setViewPortSize(1920, 1080)
+        WebUI.delay(1)
+        
         String projectDir = RunConfiguration.getProjectDir()
         String baseFolder = projectDir + "/Data Files/VisualTesting"
         String baselinePath = baseFolder + "/Baseline/" + imageName
@@ -26,10 +29,14 @@ class ImageComparison {
         File baselineFile = new File(baselinePath)
         
         if (!baselineFile.exists()) {
+            WebUI.scrollToElement(testObject, 5)
+            WebUI.delay(0.5)
             WebUI.takeElementScreenshot(baselinePath, testObject, FailureHandling.STOP_ON_FAILURE)
             KeywordUtil.logInfo("Baseline created: " + baselinePath)
             return true
         } else {
+            WebUI.scrollToElement(testObject, 5)
+            WebUI.delay(0.5)
             WebUI.takeElementScreenshot(actualPath, testObject, FailureHandling.STOP_ON_FAILURE)
             KeywordUtil.logInfo("Actual screenshot captured: " + actualPath)
             

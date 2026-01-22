@@ -1,33 +1,40 @@
-.gradle
 
-bin
+.gradle/
+__gradle__/
+build/
+gradle/
 
-Reports
-
-Libs
-
-output
-
+bin/
+Libs/
+__Libs__/
+Reports/
+output/
 !output/.gitkeep
-build
-
+Temp/
+.cache/
+.settings/
 .classpath
-
+.__classpath__
 .project
 
-.cache
-/.settings/
-/.classpath
-/.project
-/bin/
-/Libs/
-/Reports/
-/Temp/
-/.cache/
-
-# Visual Testing - CHỈ IGNORE ACTUAL VÀ FAILED
 Data Files/VisualTesting/Actual/
 Data Files/VisualTesting/Failed/
 
-# Test Reports
-Reports/
+*.log
+
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+.idea/
+*.iml
+.vscode/
+
+
+*.bak
+*~
+
+*.xml
+!output/.gitkeep
