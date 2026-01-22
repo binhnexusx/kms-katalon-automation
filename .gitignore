@@ -16,3 +16,18 @@ build
 .project
 
 .cache
+/.settings/
+/.classpath
+/.project
+/bin/
+/Libs/
+/Reports/
+/Temp/
+/.cache/
+
+# Visual Testing - CHỈ IGNORE ACTUAL VÀ FAILED
+Data Files/VisualTesting/Actual/
+Data Files/VisualTesting/Failed/
+
+# Test Reports
+Reports/
