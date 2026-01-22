@@ -1,18 +1,26 @@
-name: CI CD Katalon
-on: [push] 
+name: CI CD Katalon Practice 2026
+on: [push]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
-        browser: ['Chrome (headless)', 'Firefox (headless)'] 
+        browser: ["Chrome (headless)", "Firefox (headless)"]
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Run Katalon Studio
-        uses: katalon-studio/katalon-studio-github-action@v2
+        uses: katalon-studio/katalon-studio-github-action@v2.10.0
         with:
-          version: 'latest'
-          args: '-noSplash -runMode=console -projectPath="./" -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" -browserType="${{ matrix.browser }}" -apiKey=${{ secrets.KATALON_API_KEY }}'
+          version: "9.0.0"
+          args: >
+            -noSplash 
+            -runMode=console 
+            -projectPath="./" 
+            -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" 
+            -browserType="${{ matrix.browser }}" 
+            -apiKey=${{ secrets.KATALON_API_KEY }}
