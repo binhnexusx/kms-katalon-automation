@@ -1,0 +1,18 @@
+name: CI CD Katalon
+on: [push] 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        browser: ['Chrome (headless)', 'Firefox (headless)'] 
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Katalon Studio
+        uses: katalon-studio/katalon-studio-github-action@v2
+        with:
+          version: 'latest'
+          args: '-noSplash -runMode=console -projectPath="./" -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" -browserType="${{ matrix.browser }}" -apiKey=${{ secrets.KATALON_API_KEY }}'
