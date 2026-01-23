@@ -17,18 +17,13 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
-WebUI.navigateToUrl(GlobalVariable.urlShop)
-WebUI.click(findTestObject('Object Repository/CURA/btn_MakeAppointment'))
-WebUI.verifyElementPresent(findTestObject('Object Repository/CURA/form_LoginForm'), 10)
+WebUI.navigateToUrl(GlobalVariable.urlLogin)
+WebUI.verifyElementPresent(findTestObject('Object Repository/Shopping Carts/Login/h1_PageTitle'), 0)
+WebUI.setText(findTestObject('Object Repository/Shopping Carts/Login/txt_UserName'), GlobalVariable.username)
+WebUI.setText(findTestObject('Object Repository/Shopping Carts/Login/txt_Password'), GlobalVariable.password)
 
-String username = WebUI.getAttribute(findTestObject('Object Repository/CURA/lbl_Username'), 'value')
-WebUI.setText(findTestObject('Object Repository/CURA/txt_Username'), username)
-WebUI.verifyElementAttributeValue(findTestObject('Object Repository/CURA/txt_Username'), 'value', username, 5)
+WebUI.click(findTestObject('Object Repository/Shopping Carts/Login/btn_Login'))
 
-String password = WebUI.getAttribute(findTestObject('Object Repository/CURA/lbl_Password'), 'value')
-WebUI.setText(findTestObject('Object Repository/CURA/txt_Password'), password)
-WebUI.verifyElementAttributeValue(findTestObject('Object Repository/CURA/txt_Password'), 'value', password, 5)
+WebUI.verifyElementPresent(findTestObject('Object Repository/Shopping Carts/Login/href_AccountDetails'), 0)
 
-WebUI.click(findTestObject('Object Repository/CURA/btn_Login'))
-WebUI.verifyElementPresent(findTestObject('Object Repository/CURA/h2_MakeAppointment'), 10)
-WebUI.verifyElementText(findTestObject('Object Repository/CURA/h2_MakeAppointment'), 'Make Appointment')
+
