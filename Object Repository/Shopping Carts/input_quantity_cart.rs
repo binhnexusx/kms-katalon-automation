@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_cuponcode</name>
+   <name>input_quantity_cart</name>
    <tag></tag>
-   <elementGuidId>e2bcfcd4-aa15-4a8c-97d0-f619dadc609e</elementGuidId>
+   <elementGuidId>08615667-ddda-4552-abec-87f702471c84</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//input[@id='coupon_code']</value>
+         <value>//div[@class='quantity']/input</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

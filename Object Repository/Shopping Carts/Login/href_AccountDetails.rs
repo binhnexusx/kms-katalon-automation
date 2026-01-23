@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_cuponcode</name>
+   <name>href_AccountDetails</name>
    <tag></tag>
-   <elementGuidId>e2bcfcd4-aa15-4a8c-97d0-f619dadc609e</elementGuidId>
+   <elementGuidId>d2ce9600-c707-4de2-a547-f61e78d15168</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//a[text()='Account details']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@id='coupon_code']</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

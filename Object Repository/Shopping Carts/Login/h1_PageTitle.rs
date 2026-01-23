@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>txt_cuponcode</name>
+   <name>h1_PageTitle</name>
    <tag></tag>
-   <elementGuidId>e2bcfcd4-aa15-4a8c-97d0-f619dadc609e</elementGuidId>
+   <elementGuidId>9e92f05a-cd10-4631-b010-15b96f0d3879</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
+         <value>//h1[@class='page-title']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//input[@id='coupon_code']</value>
+         <key>BASIC</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

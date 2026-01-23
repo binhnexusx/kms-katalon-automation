@@ -1,0 +1,80 @@
+name: CI CD Katalon Practice 2026
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    strategy:
+      matrix:
+        browser: ["Chrome (headless)", "Firefox (headless)"]
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Start Xvfb
+        run: |
+          export DISPLAY=:99
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+          sleep 3
+
+      - name: Starting Test Execution
+        run: |
+          echo "=========================================="
+          echo "STARTING TEST SUITE EXECUTION"
+          echo "Browser: ${{ matrix.browser }}"
+          echo "Test Suite: CURA_Healthcare_Test_Suite"
+          echo "Start Time: $(date '+%Y-%m-%d %H:%M:%S')"
+          echo "=========================================="
+
+      - name: Run Katalon Studio
+        timeout-minutes: 20
+        uses: katalon-studio/katalon-studio-github-action@v2
+        with:
+          version: "9.0.0"
+          projectPath: ${{ github.workspace }}
+          args: '-browserType="${{ matrix.browser }}" -testSuitePath="Test Suites/CURA_Healthcare_Test_Suite" -apiKey=${{ secrets.KATALON_API_KEY }}'
+        env:
+          DISPLAY: ":99"
+          NO_AT_BRIDGE: "1"
+
+      - name: Test Execution Completed
+        if: success()
+        run: |
+          echo "=========================================="
+          echo "TEST SUITE COMPLETED SUCCESSFULLY"
+          echo "Browser: ${{ matrix.browser }}"
+          echo "End Time: $(date '+%Y-%m-%d %H:%M:%S')"
+          echo "=========================================="
+
+      - name: Test Execution Failed
+        if: failure()
+        run: |
+          echo "=========================================="
+          echo "TEST SUITE FAILED"
+          echo "Browser: ${{ matrix.browser }}"
+          echo "End Time: $(date '+%Y-%m-%d %H:%M:%S')"
+          echo "=========================================="
+
+      - name: Check Test Results
+        if: always()
+        run: |
+          echo "=========================================="
+          echo "CHECKING TEST RESULTS"
+          echo "=========================================="
+          if [ -d "Reports" ]; then
+            echo "Reports folder found"
+            find Reports -name "*.html" -o -name "*.xml" | head -10
+          else
+            echo "Reports folder not found"
+          fi
+
+      - name: Upload Test Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: katalon-reports-${{ matrix.browser }}
+          path: Reports/

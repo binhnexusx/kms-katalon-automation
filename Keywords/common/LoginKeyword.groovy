@@ -10,7 +10,7 @@ public class LoginKeyword {
 	
 	@Keyword
 	def login() {
-		WebUI.navigateToUrl(GlobalVariable.baseURL)
+		WebUI.navigateToUrl(GlobalVariable.urlShop)
 		WebUI.click(findTestObject('Object Repository/CURA/btn_MakeAppointment'))
 		WebUI.verifyElementPresent(findTestObject('Object Repository/CURA/form_LoginForm'), 10)
 		
@@ -26,7 +26,7 @@ public class LoginKeyword {
 	
 	@Keyword
 	def loginWithCredentials(String username, String password) {
-		WebUI.navigateToUrl(GlobalVariable.baseURL)
+		WebUI.navigateToUrl(GlobalVariable.urlShop)
 		WebUI.click(findTestObject('Object Repository/CURA/btn_MakeAppointment'))
 		WebUI.verifyElementPresent(findTestObject('Object Repository/CURA/form_LoginForm'), 10)
 		

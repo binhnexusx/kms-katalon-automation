@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_quality down</name>
+   <name>span_product_price</name>
    <tag></tag>
-   <elementGuidId>934f8f39-5e26-4bee-a785-6398d95ee313</elementGuidId>
+   <elementGuidId>1e42b0c1-bf50-46a9-8edc-5da850b55462</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[@class=&quot;quantity-button quantity-down&quot;]</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(//tr[contains(@class,'cart_item')])[${i}]//td[@class='product-price']//span[contains(@class,'amount')]&#xd;
+</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>

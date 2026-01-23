@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>btn_quality up</name>
+   <name>rows_cart_items</name>
    <tag></tag>
-   <elementGuidId>7a777e37-8010-48e7-adfb-98d0725fff92</elementGuidId>
+   <elementGuidId>3ab2647a-e681-409f-a712-3b75b9062659</elementGuidId>
    <selectorCollection>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[@class=&quot;quantity-button quantity-up&quot;]</value>
-      </entry>
       <entry>
          <key>BASIC</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//tr[contains(@class,'cart_item')]&#xd;
+</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
